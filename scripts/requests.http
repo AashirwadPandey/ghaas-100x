@@ -1,0 +1,47 @@
+### Health
+GET http://localhost:3001/api/health
+
+### Offices list
+GET http://localhost:3001/api/offices?page=1&limit=5
+
+### Office by id (replace {{id}})
+GET http://localhost:3001/api/offices/{{id}}
+
+### Generate PDF
+POST http://localhost:3001/api/generate-pdf
+Content-Type: application/json
+
+{
+  "serviceId": "s1",
+  "profile": {"name":"Test User", "phone":"123", "email":"t@example.com"}
+}
+
+### Create complaint (no files)
+POST http://localhost:3001/api/complaints
+Content-Type: application/x-www-form-urlencoded
+
+title=Garbage%20not%20collected
+
+### Get complaint status (replace {{ticket}})
+GET http://localhost:3001/api/complaints/{{ticket}}
+
+### Update complaint status (admin) (replace {{ticket}} and key)
+PUT http://localhost:3001/api/complaints/{{ticket}}/status
+Content-Type: application/json
+x-admin-key: change-me
+
+{
+  "status": "in-progress"
+}
+
+### Tenders list
+GET http://localhost:3001/api/tenders
+
+### Tender subscribe (replace {{tid}})
+POST http://localhost:3001/api/tenders/subscribe
+Content-Type: application/json
+
+{
+  "tender_id": "{{tid}}",
+  "email": "test@example.com"
+}

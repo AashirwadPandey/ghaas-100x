@@ -9,8 +9,8 @@ const uploadDir = path.resolve(process.cwd(), 'uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
 const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, uploadDir),
-  filename: (_req, file, cb) => {
+  destination: (_req: Request, _file: any, cb: any) => cb(null, uploadDir),
+  filename: (_req: Request, file: any, cb: any) => {
     const unique = `${Date.now()}-${Math.round(Math.random()*1e6)}`;
     cb(null, `${unique}-${file.originalname}`);
   }
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
-  fileFilter: (_req, file, cb) => {
+  fileFilter: (_req: Request, file: any, cb: any) => {
     const allowed = ['image/jpeg', 'image/png'];
     if (allowed.includes(file.mimetype)) return cb(null, true);
     cb(new Error('Invalid file type'));
@@ -49,7 +49,7 @@ function generateTicketId(): string {
 router.post('/', upload.array('files', 3), (req: Request, res: Response) => {
   const { title, description, office_id, lat, lng } = req.body as any;
   if (!title) return res.status(400).json({ error: 'title is required' });
-  const files = (req.files as Express.Multer.File[] | undefined) || [];
+  const files = (((req as any).files as any[]) || []);
   const ticket_id = generateTicketId();
   const complaint: Complaint = {
     ticket_id,
@@ -57,7 +57,7 @@ router.post('/', upload.array('files', 3), (req: Request, res: Response) => {
     description,
     office_id,
     status: 'received',
-    evidence: files.map(f => ({ filename: f.filename, mimetype: f.mimetype, size: f.size, path: f.path })),
+    evidence: files.map((f: any) => ({ filename: f.filename, mimetype: f.mimetype, size: f.size, path: f.path })),
     location: { lat: lat ? Number(lat) : undefined, lng: lng ? Number(lng) : undefined },
     created_at: new Date().toISOString()
   };

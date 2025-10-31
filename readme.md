@@ -20,6 +20,7 @@ This project is meant for demonstration and prototyping only. Several integratio
 - Office directory with basic contact info and geo location.
 - One service page that explains procedure, documents required, and an auto-fill PDF export using a stored user profile.
 - Complaint submission form that accepts images and returns a unique ticket ID. Admin panel to change ticket status is simulated.
+ - Complaint submission form that accepts images and returns a unique ticket ID. Admin panel to change ticket status is simulated.
 - One tender listing and a subscription mock to show alert functionality.
 - Bilingual UI toggle: English and Nepali sample translations.
 
@@ -28,6 +29,7 @@ This project is meant for demonstration and prototyping only. Several integratio
 - Map on the home page using Leaflet with low-bandwidth toggle to skip map tiles
 - Simple i18n toggle in the header (EN/NE) with example translations for nav labels
 - Admin edit page at `/admin/edit/[id]` for offices; uses PUT `/api/offices/:id` with `x-api-key`
+- Admin complaint status page at `/admin/complaints/[ticketId]` to update complaint status with `x-admin-key`
 - Backend (Express + TypeScript) routes: offices, services, generate-pdf, complaints (multipart), tenders
 - Basic PWA files: `public/manifest.json` and `public/sw.js` (cache-first for a few routes)
 
@@ -95,7 +97,38 @@ cd ../web
 pnpm dev
 ```
 
+### Using npm (Windows-friendly)
+If pnpm isn’t installed, you can use npm:
+```bash
+# backend
+cd apps/api
+npm install
+npm run dev
+
+# frontend
+cd ../web
+npm install
+npm run dev
+```
+
 6. Open the frontend at http://localhost:3000 and follow the demo script below.
+
+---
+
+## Deployment (quick start)
+
+### API (Render or Railway)
+- Root: `apps/api`
+- Build: `npm install && npm run build`
+- Start: `npm start`
+- Env: `PORT`, `ADMIN_API_KEY`, `NOTIFICATION_PROVIDER=mock`, `STORAGE_PROVIDER=local` (others optional)
+
+### Web (Vercel)
+- Root: `apps/web`
+- Env: `NEXT_PUBLIC_API_BASE_URL` set to your deployed API URL
+- Use default Next.js build settings
+
+Post-deploy checks: open API `/api/health` and frontend routes `/`, `/offices`, `/complaint`, `/tenders`, `/admin/*`.
 
 ---
 
@@ -121,6 +154,7 @@ Keep the demo human. Tell a short story about a citizen who needs to get a licen
 - POST /api/tenders/subscribe
 - POST /api/generate-pdf
  - PUT /api/offices/:id (admin, requires header `x-api-key`)
+ - PUT /api/complaints/:ticketId/status (admin, requires header `x-admin-key`)
 
 When demonstrating, explain which endpoints are mocked and which are functional.
 
@@ -137,6 +171,19 @@ STORAGE_PROVIDER=local       # or 'supabase'
 ADMIN_API_KEY=change-me-strong
 NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
 ```
+
+---
+
+## HTTP demo (VS Code REST Client)
+Use `scripts/requests.http` to exercise the API quickly.
+
+Steps:
+- Install the "REST Client" extension in VS Code.
+- Open `scripts/requests.http`.
+- Replace placeholders like `{{id}}`, `{{ticket}}`, and `{{tid}}` with real values from previous responses.
+- Click "Send Request" above each block to run it against your local API.
+
+This is handy during the demo to show the endpoints without switching tools.
 
 ---
 
