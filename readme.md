@@ -23,6 +23,14 @@ This project is meant for demonstration and prototyping only. Several integratio
 - One tender listing and a subscription mock to show alert functionality.
 - Bilingual UI toggle: English and Nepali sample translations.
 
+### Implemented in this repo
+- Frontend (Next.js app router) with pages: `/offices`, `/office/[id]`, `/service/[id]`, `/complaint`, `/complaint/status/[ticketId]`, `/tenders`, `/tenders/[id]`
+- Map on the home page using Leaflet with low-bandwidth toggle to skip map tiles
+- Simple i18n toggle in the header (EN/NE) with example translations for nav labels
+- Admin edit page at `/admin/edit/[id]` for offices; uses PUT `/api/offices/:id` with `x-api-key`
+- Backend (Express + TypeScript) routes: offices, services, generate-pdf, complaints (multipart), tenders
+- Basic PWA files: `public/manifest.json` and `public/sw.js` (cache-first for a few routes)
+
 ## Out of scope for the hackathon (to mock)
 - Real SMS or IVR delivery. Use a console log or email mock instead.
 - Real payment processing and official document submission. Use downloadable PDFs or simulated endpoints.
@@ -112,6 +120,7 @@ Keep the demo human. Tell a short story about a citizen who needs to get a licen
 - GET /api/tenders
 - POST /api/tenders/subscribe
 - POST /api/generate-pdf
+ - PUT /api/offices/:id (admin, requires header `x-api-key`)
 
 When demonstrating, explain which endpoints are mocked and which are functional.
 
@@ -125,6 +134,8 @@ SUPABASE_KEY=public-anon-key
 JWT_SECRET=your_jwt_secret
 NOTIFICATION_PROVIDER=mock   # set to 'mock' for hackathon demo
 STORAGE_PROVIDER=local       # or 'supabase'
+ADMIN_API_KEY=change-me-strong
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3001
 ```
 
 ---
