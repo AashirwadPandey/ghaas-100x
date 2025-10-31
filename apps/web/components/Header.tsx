@@ -16,17 +16,19 @@ export default function Header() {
     }
   }
   return (
-    <header style={{ padding: 12, borderBottom: '1px solid #e5e7eb', display: 'flex', gap: 12, alignItems: 'center' }}>
-      <a href="/" style={{ fontWeight: 700, textDecoration: 'none', color: 'inherit' }}>GHaaS</a>
-      <nav style={{ display: 'flex', gap: 12 }}>
-        <a href="/offices"><LangText en="Offices" ne="कार्यालयहरू" /></a>
-        <a href="/complaint"><LangText en="Complaint" ne="गुनासो" /></a>
-        <a href="/tenders"><LangText en="Tenders" ne="बोलपत्र" /></a>
-        <a href="/admin/edit/1" style={{ opacity: 0.7 }}><LangText en="Admin" ne="व्यवस्थापक" /></a>
-      </nav>
-      <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
-        <button onClick={toggleLang}>EN/NE</button>
-        <button onClick={toggleLowBandwidth}>Low bandwidth</button>
+    <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/70 backdrop-blur">
+      <div className="container flex h-14 items-center gap-4">
+        <a href="/" className="font-bold text-brand-700 hover:text-brand-800">GHaaS</a>
+        <nav className="hidden md:flex items-center gap-4 text-sm text-slate-600">
+          <a className="hover:text-slate-900" href="/offices"><LangText en="Offices" ne="कार्यालयहरू" /></a>
+          <a className="hover:text-slate-900" href="/complaint"><LangText en="Complaint" ne="गुनासो" /></a>
+          <a className="hover:text-slate-900" href="/tenders"><LangText en="Tenders" ne="बोलपत्र" /></a>
+          <a className="hover:text-slate-900/80" href="/admin/edit/1"><LangText en="Admin" ne="व्यवस्थापक" /></a>
+        </nav>
+        <div className="ml-auto flex items-center gap-2">
+          <button onClick={toggleLang} className="inline-flex items-center rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50">EN/NE</button>
+          <button onClick={toggleLowBandwidth} className="inline-flex items-center rounded-md bg-brand-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-brand-700">Low bandwidth</button>
+        </div>
       </div>
     </header>
   );

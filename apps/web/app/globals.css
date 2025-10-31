@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS variables for light/dark theme tweaks */
+:root {
+  --bg: 255 255 255;
+  --fg: 17 24 39;
+}
+.dark {
+  --bg: 17 24 39;
+  --fg: 243 244 246;
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+/* Nice focus ring */
+*:focus-visible {
+  outline: 2px solid theme('colors.brand.500');
+  outline-offset: 2px;
+}
+
+/* Typography helpers */
+.prose p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}

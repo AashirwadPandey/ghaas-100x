@@ -36,5 +36,5 @@ export default function OfficeMap({ pins }: { pins: Pin[] }) {
     return () => { try { map?.remove(); } catch {} };
   }, [pins]);
 
-  return <div ref={ref} style={{ height: 400, width: '100%', background: '#eef2ff' }} />;
+  return <div ref={ref} className="h-96 w-full rounded-xl border border-slate-200 bg-brand-50" />;
 }

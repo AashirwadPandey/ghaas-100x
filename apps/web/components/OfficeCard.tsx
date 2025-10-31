@@ -9,18 +9,18 @@ type Props = {
 
 export default function OfficeCard({ id, name, address, phone, lat, lng }: Props) {
   return (
-    <div style={{ border: '1px solid #e5e7eb', borderRadius: 8, padding: 12 }}>
-      <a href={`/office/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-        <h3 style={{ marginTop: 0 }}>{name}</h3>
-        <p style={{ margin: '4px 0' }}>{address || '—'}</p>
-        <p style={{ margin: '4px 0', color: '#2563eb' }}>{phone || ''}</p>
+    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-card transition hover:shadow-lg">
+      <a href={`/office/${id}`} className="no-underline text-inherit">
+        <h3 className="mt-0 text-lg font-semibold text-slate-900">{name}</h3>
+        <p className="my-1 text-slate-600">{address || '—'}</p>
+        <p className="my-1 text-brand-700">{phone || ''}</p>
       </a>
-      <div style={{ marginTop: 8, display: 'flex', gap: 8 }}>
+      <div className="mt-3 flex gap-2">
         {phone && (
-          <a href={`tel:${phone}`} style={{ padding: '6px 10px', border: '1px solid #ddd', borderRadius: 6 }}>Call</a>
+          <a href={`tel:${phone}`} className="inline-flex items-center rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Call</a>
         )}
         {(lat && lng) ? (
-          <a target="_blank" rel="noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`} style={{ padding: '6px 10px', border: '1px solid #ddd', borderRadius: 6 }}>Directions</a>
+          <a target="_blank" rel="noreferrer" href={`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`} className="inline-flex items-center rounded-md bg-brand-600 px-3 py-1.5 text-sm text-white hover:bg-brand-700">Directions</a>
         ) : null}
       </div>
     </div>
