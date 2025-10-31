@@ -99,21 +99,27 @@ export default async function Page() {
               )
             },
             {
-              titleEn: 'Fast and mobile-first',
-              titleNe: 'छिटो र मोबाइलमैत्री',
-              descEn: 'Built with modern tooling for speed and reliability.',
-              descNe: 'छिटोपना र भरपर्दोपनका लागि आधुनिक उपकरणहरूद्वारा निर्मित।',
+              titleEn: 'Multilingual interface',
+              titleNe: 'बहुभाषी इन्टरफेस',
+              descEn: 'Toggle languages instantly for a wider, inclusive audience.',
+              descNe: 'व्यापक र समावेशी पहुँचका लागि भाषा तुरुन्तै परिवर्तन गर्नुहोस्।',
               icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-brand-700"><rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="18" r="1" fill="currentColor"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-brand-700">
+                  <path stroke="currentColor" strokeWidth="1.5" d="M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18Z"/>
+                  <path stroke="currentColor" strokeWidth="1.5" d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>
+                </svg>
               )
             },
             {
-              titleEn: 'Offline-friendly PWA',
-              titleNe: 'अफलाइनमैत्री PWA',
-              descEn: 'Works on spotty connections with smart caching.',
-              descNe: 'स्मार्ट क्यासिङसँगै कमजोर जडानमा पनि काम गर्छ।',
+              titleEn: 'Admin tools',
+              titleNe: 'प्रशासनिक उपकरणहरू',
+              descEn: 'Edit office details and manage complaint statuses securely.',
+              descNe: 'कार्यालय विवरण सम्पादन र गुनासो स्थिति सुरक्षित तरिकाले व्यवस्थापन गर्नुहोस्।',
               icon: (
-                <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-brand-700"><path stroke="currentColor" strokeWidth="1.5" d="M12 3v18M3 12h18"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-brand-700">
+                  <path stroke="currentColor" strokeWidth="1.5" d="M12 3l2.5 5 5 .7-3.7 3.6.9 5.1L12 15l-4.7 2.4.9-5.1L4.5 8.7l5-.7L12 3Z"/>
+                  <path stroke="currentColor" strokeWidth="1.5" d="M8 20h8"/>
+                </svg>
               )
             }
           ].map((f, i) => (
