@@ -12,7 +12,7 @@ type Office = {
 
 async function fetchOffice(id: string): Promise<Office> {
   const base = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001';
-  const res = await fetch(`${base}/api/offices/${id}`, { next: { revalidate: 0 } });
+  const res = await fetch(`${base}/api/offices/${id}`, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to load office');
   return res.json();
 }
