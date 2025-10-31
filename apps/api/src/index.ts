@@ -2,6 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import officesRouter from './routes/offices.js';
+import servicesRouter from './routes/services.js';
+import generatePdfRouter from './routes/generatePdf.js';
+import complaintsRouter from './routes/complaints.js';
+import tendersRouter from './routes/tenders.js';
 
 const app = express();
 app.use(cors());
@@ -13,6 +17,10 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.use('/api/offices', officesRouter);
+app.use('/api/services', servicesRouter);
+app.use('/api/generate-pdf', generatePdfRouter);
+app.use('/api/complaints', complaintsRouter);
+app.use('/api/tenders', tendersRouter);
 
 export default app;
 
