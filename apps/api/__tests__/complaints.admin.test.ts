@@ -1,5 +1,6 @@
 import request from 'supertest';
-import app from '../src/index.js';
+import app from '../src/index';
+import { describe, it, expect } from '@jest/globals';
 
 describe('PUT /api/complaints/:ticketId/status (admin)', () => {
   it('rejects without admin key', async () => {

@@ -2,65 +2,94 @@ import LangText from "../components/LangText";
 
 export default async function Page() {
   return (
-    <div className="space-y-16">
+    <div className="mx-auto max-w-6xl space-y-16">
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-brand-50 to-white p-8 shadow-card sm:p-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+      <section className="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-brand-50 via-white to-brand-50/30 p-8 shadow-sm sm:p-12">
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <h1 className="text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             <LangText
               en="A simple, beautiful hub for government services"
               ne="सरकारी सेवाहरूका लागि सजिलो र आकर्षक केन्द्र"
             />
           </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-base text-slate-600 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg">
             <LangText
               en="Find offices, submit complaints, and track tenders from one place—fast, modern, and mobile-friendly."
               ne="एकै स्थानबाट कार्यालयहरू खोज्नुहोस्, गुनासो पेश गर्नुहोस्, र बोलपत्रहरू अनुगमन गर्नुहोस्—छिटो, आधुनिक र मोबाइलमैत्री।"
             />
           </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
               href="/offices"
-              className="inline-flex items-center rounded-md bg-brand-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-brand-700"
+              className="inline-flex items-center rounded-lg bg-brand-600 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-brand-700"
             >
               <LangText en="Browse offices" ne="कार्यालयहरू हेर्नुहोस्" />
             </a>
             <a
               href="/complaint"
-              className="inline-flex items-center rounded-md border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50"
+              className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50"
             >
               <LangText en="Submit a complaint" ne="गुनासो पेश गर्नुहोस्" />
             </a>
             <a
               href="/tenders"
-              className="inline-flex items-center rounded-md border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50"
+              className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50"
             >
               <LangText en="View tenders" ne="बोलपत्रहरू हेर्नुहोस्" />
             </a>
           </div>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500">
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1">PWA-ready</span>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Next.js 14</span>
-            <span className="rounded-full border border-slate-200 bg-white px-3 py-1">Express API</span>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm">PWA-ready</span>
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm">Next.js 14</span>
+            <span className="rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm">Express API</span>
           </div>
         </div>
 
-        {/* Decorative gradient blob */}
-        <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-300/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-brand-200/40 blur-3xl" />
+        {/* Decorative gradient blobs */}
+        <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-300/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-brand-200/30 blur-3xl" />
       </section>
 
       {/* Features */}
       <section>
-        <div className="mx-auto mb-8 max-w-3xl text-center">
-          <h2 className="text-xl font-semibold tracking-tight">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             <LangText en="Everything you need, simplified" ne="सबै आवश्यकता, सरल तरिकामा" />
           </h2>
-          <p className="mt-1 text-slate-600">
+          <p className="mt-2 text-base text-slate-600">
             <LangText en="Designed for clarity, speed, and accessibility." ne="स्पष्टता, छिटोपन, र पहुँचका लागि डिजाइन गरिएको।" />
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+        {/* Quick Stats */}
+        <div className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-xl border border-slate-200 bg-gradient-to-br from-blue-50 to-white p-6 text-center shadow-sm">
+            <div className="text-3xl font-bold text-blue-700">26+</div>
+            <div className="mt-1 text-sm font-medium text-slate-600">
+              <LangText en="Government Offices" ne="सरकारी कार्यालयहरू" />
+            </div>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-gradient-to-br from-green-50 to-white p-6 text-center shadow-sm">
+            <div className="text-3xl font-bold text-green-700">18+</div>
+            <div className="mt-1 text-sm font-medium text-slate-600">
+              <LangText en="Available Services" ne="उपलब्ध सेवाहरू" />
+            </div>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-gradient-to-br from-amber-50 to-white p-6 text-center shadow-sm">
+            <div className="text-3xl font-bold text-amber-700">15+</div>
+            <div className="mt-1 text-sm font-medium text-slate-600">
+              <LangText en="Active Tenders" ne="सक्रिय बोलपत्रहरू" />
+            </div>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-gradient-to-br from-purple-50 to-white p-6 text-center shadow-sm">
+            <div className="text-3xl font-bold text-purple-700">24/7</div>
+            <div className="mt-1 text-sm font-medium text-slate-600">
+              <LangText en="Online Access" ne="अनलाइन पहुँच" />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
               titleEn: 'Find nearby offices',
@@ -111,10 +140,10 @@ export default async function Page() {
               )
             },
             {
-              titleEn: 'Admin tools',
-              titleNe: 'प्रशासनिक उपकरणहरू',
-              descEn: 'Edit office details and manage complaint statuses securely.',
-              descNe: 'कार्यालय विवरण सम्पादन र गुनासो स्थिति सुरक्षित तरिकाले व्यवस्थापन गर्नुहोस्।',
+              titleEn: 'Browse government services',
+              titleNe: 'सरकारी सेवाहरू ब्राउज गर्नुहोस्',
+              descEn: 'Explore available services with requirements and procedures.',
+              descNe: 'आवश्यकता र प्रक्रिया सहितका उपलब्ध सेवाहरू अन्वेषण गर्नुहोस्।',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-brand-700">
                   <path stroke="currentColor" strokeWidth="1.5" d="M12 3l2.5 5 5 .7-3.7 3.6.9 5.1L12 15l-4.7 2.4.9-5.1L4.5 8.7l5-.7L12 3Z"/>
@@ -123,16 +152,16 @@ export default async function Page() {
               )
             }
           ].map((f, i) => (
-            <div key={i} className="rounded-xl border border-slate-200 bg-white p-5 shadow-card">
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100">
+            <div key={i} className="group rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-brand-200 hover:shadow-md">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-brand-50 transition group-hover:bg-brand-100">
                   {f.icon}
                 </div>
                 <div>
                   <h3 className="text-base font-semibold text-slate-900">
                     <LangText en={f.titleEn} ne={f.titleNe} />
                   </h3>
-                  <p className="mt-1 text-sm text-slate-600">
+                  <p className="mt-1 text-sm leading-relaxed text-slate-600">
                     <LangText en={f.descEn} ne={f.descNe} />
                   </p>
                 </div>
@@ -143,18 +172,18 @@ export default async function Page() {
       </section>
 
       {/* CTA */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-card">
-        <h3 className="text-lg font-semibold">
+      <section className="rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 to-white p-8 text-center shadow-sm">
+        <h3 className="text-xl font-bold text-slate-900 sm:text-2xl">
           <LangText en="Ready to get started?" ne="सुरु गर्न तयार हुनुहुन्छ?" />
         </h3>
-        <p className="mt-1 text-slate-600">
+        <p className="mt-2 text-base text-slate-600">
           <LangText en="Jump into the directory or file a complaint in minutes." ne="डाइरेक्टरीमा जानुहोस् वा केही मिनेटमै गुनासो दर्ता गर्नुहोस्।" />
         </p>
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-          <a href="/offices" className="inline-flex items-center rounded-md bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-brand-700">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <a href="/offices" className="inline-flex items-center rounded-lg bg-brand-600 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-brand-700">
             <LangText en="Browse offices" ne="कार्यालयहरू हेर्नुहोस्" />
           </a>
-          <a href="/complaint" className="inline-flex items-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50">
+          <a href="/complaint" className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50">
             <LangText en="Submit a complaint" ne="गुनासो पेश गर्नुहोस्" />
           </a>
         </div>

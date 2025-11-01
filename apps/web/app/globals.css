@@ -20,6 +20,11 @@ body {
   color: rgb(var(--fg));
 }
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Nice focus ring */
 *:focus-visible {
   outline: 2px solid theme('colors.brand.500');
@@ -30,4 +35,54 @@ body {
 .prose p {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Status badges */
+.status-badge {
+  @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+}
+
+.status-pending {
+  @apply bg-amber-100 text-amber-800 ring-1 ring-amber-200;
+}
+
+.status-in-progress {
+  @apply bg-blue-100 text-blue-800 ring-1 ring-blue-200;
+}
+
+.status-resolved {
+  @apply bg-green-100 text-green-800 ring-1 ring-green-200;
+}
+
+.status-rejected {
+  @apply bg-red-100 text-red-800 ring-1 ring-red-200;
 }

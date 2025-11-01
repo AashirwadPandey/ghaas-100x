@@ -35,6 +35,7 @@ export type Complaint = {
   evidence: { filename: string; mimetype: string; size: number; path: string }[];
   location?: { lat?: number; lng?: number };
   created_at: string;
+  votes: number;
 };
 
 const COMPLAINTS: Complaint[] = [];
@@ -59,10 +60,20 @@ router.post('/', upload.array('files', 3), (req: Request, res: Response) => {
     status: 'received',
     evidence: files.map((f: any) => ({ filename: f.filename, mimetype: f.mimetype, size: f.size, path: f.path })),
     location: { lat: lat ? Number(lat) : undefined, lng: lng ? Number(lng) : undefined },
-    created_at: new Date().toISOString()
+    created_at: new Date().toISOString(),
+    votes: 0
   };
   COMPLAINTS.push(complaint);
   res.status(201).json({ ticketId: ticket_id, url: `/complaint/status/${ticket_id}` });
+});
+
+router.get('/', (req: Request, res: Response) => {
+  const page = Number(req.query.page || 1);
+  const limit = Math.min(100, Number(req.query.limit || 50));
+  const start = (page - 1) * limit;
+  const sorted = [...COMPLAINTS].sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const data = sorted.slice(start, start + limit);
+  res.json({ page, limit, total: COMPLAINTS.length, data });
 });
 
 router.get('/:ticketId', (req: Request, res: Response) => {
@@ -81,6 +92,13 @@ router.put('/:ticketId/status', (req: Request, res: Response) => {
   if (!found) return res.status(404).json({ error: 'Not found' });
   found.status = status;
   res.json({ ok: true, status });
+});
+
+router.post('/:ticketId/upvote', (req: Request, res: Response) => {
+  const found = COMPLAINTS.find(c => c.ticket_id === req.params.ticketId);
+  if (!found) return res.status(404).json({ error: 'Not found' });
+  found.votes = (found.votes || 0) + 1;
+  res.json({ ok: true, votes: found.votes });
 });
 
 export default router;

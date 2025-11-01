@@ -1,5 +1,6 @@
 import request from 'supertest';
-import app from '../src/index.js';
+import app from '../src/index';
+import { describe, it, expect } from '@jest/globals';
 
 describe('POST /api/generate-pdf', () => {
   it('returns a PDF for a valid serviceId', async () => {

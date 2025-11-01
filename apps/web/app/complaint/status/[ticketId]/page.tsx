@@ -5,9 +5,10 @@ type Complaint = {
   created_at: string;
 };
 
+import { apiFetch } from "../../../../src/lib/api";
+
 async function fetchComplaint(ticketId: string): Promise<Complaint> {
-  const base = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001';
-  const res = await fetch(`${base}/api/complaints/${ticketId}`, { cache: 'no-store' });
+  const res = await apiFetch(`/api/complaints/${ticketId}`);
   if (!res.ok) throw new Error('Failed to load complaint');
   return res.json();
 }

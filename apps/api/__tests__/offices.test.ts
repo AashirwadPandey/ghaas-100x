@@ -1,5 +1,6 @@
 import request from 'supertest';
-import app from '../src/index.js';
+import app from '../src/index';
+import { describe, it, expect } from '@jest/globals';
 
 describe('GET /api/offices', () => {
   it('returns paginated offices', async () => {
